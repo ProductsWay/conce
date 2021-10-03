@@ -13,10 +13,12 @@ Future<void> main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMzI1MTU3NSwiZXhwIjoxOTQ4ODI3NTc1fQ.l1LfM1UfLaoHUXPvsEPh1jpV-yteP-1KGALbxtnQ_l4',
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
