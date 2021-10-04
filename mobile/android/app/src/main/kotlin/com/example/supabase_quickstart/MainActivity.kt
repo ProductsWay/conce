@@ -1,4 +1,4 @@
-package com.example.conce_app
+package com.productsway.conce_app
 
 import io.flutter.embedding.android.FlutterActivity
 
