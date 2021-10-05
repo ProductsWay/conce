@@ -19,7 +19,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  build-apk:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -28,17 +28,17 @@ jobs:
     # Runs a single command using the runners shell
     - name: Create release version
       run: echo "Release ${{ github.event.inputs.name }}"
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
-        flutter-version: '1.7.8+hotfix.4'
+        channel: 'stable' # or: 'beta', 'dev' or 'master'
     - run: flutter pub get
       working-directory: mobile
-    - run: flutter test
-      working-directory: mobile
+#     - run: flutter test
+#       working-directory: mobile
     - run: flutter build apk --debug --split-per-abi
       working-directory: mobile
     - name: Push APK to Releases
