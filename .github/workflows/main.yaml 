@@ -12,16 +12,14 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         flutter-version: '1.7.8+hotfix.4'
-      working_directory: mobile
     - run: flutter pub get
-      working_directory: mobile
+      working-directory: mobile
     - run: flutter test
-      working_directory: mobile
+      working-directory: mobile
     - run: flutter build apk --debug --split-per-abi
-      working_directory: mobile
+      working-directory: mobile
     - name: Push APK to Releases
       uses: ncipollo/release-action@v1
       with:
         artifacts: "build/app/outputs/apk/debug/*.apk"
         token: ${{ secrets.TOKEN }}
-      working_directory: mobile
