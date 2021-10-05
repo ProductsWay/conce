@@ -12,7 +12,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Release version'
         # Default value if no value is explicitly provided
-        default: 'v0.0.1'
+        default: '0.0.1'
         # Input has to be provided for the workflow to run
         required: true
   push:
