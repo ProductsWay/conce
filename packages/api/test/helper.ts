@@ -20,12 +20,12 @@ async function build(t: Test) {
   // fastify-plugin ensures that all decorators
   // are exposed for testing purposes, this is
   // different from the production setup
-  void app.register(fp(App), await config());
+  app.register(fp(App), await config());
 
   await app.ready();
 
   // Tear down our app after we are done
-  t.teardown(() => void app.close());
+  t.teardown(() => app.close());
 
   return app;
 }

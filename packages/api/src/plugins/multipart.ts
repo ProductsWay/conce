@@ -6,7 +6,7 @@ import fp from "fastify-plugin";
  *
  * @link https://github.com/fastify/fastify-multipart
  */
-export default fp<FastifyMultipartOptions>(async (fastify, opts) => {
+export default fp<FastifyMultipartOptions>(async (fastify, _opts) => {
   fastify.register(multipart, {
     attachFieldsToBody: true,
   });

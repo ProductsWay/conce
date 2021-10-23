@@ -16,7 +16,7 @@ const app = Fastify({
 app.register(import("./app"));
 
 // delay is the number of milliseconds for the graceful close to finish
-const closeListeners = closeWithGrace({ delay: 500 }, async function (opts: any) {
+const closeListeners = closeWithGrace({ delay: 500 }, async (opts: any) => {
   if (opts.err) {
     app.log.error(opts.err);
   }
