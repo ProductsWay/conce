@@ -16,7 +16,11 @@ export async function insertUserAddress(address: string, profileId: string) {
 }
 
 export async function getUserAddress(profileId: string) {
-  const userAddress = await supabase.from<definitions["wallets"]>("wallets").select("*").eq("profile_id", profileId);
+  const userAddress = await supabase
+    .from<definitions["wallets"]>("wallets")
+    .select("*")
+    .eq("profile_id", profileId)
+    .single();
 
   return userAddress;
 }
