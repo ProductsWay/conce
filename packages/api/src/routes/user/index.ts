@@ -30,11 +30,11 @@ const user: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
       const totalWallets = await countWallets();
 
       const seed = await mnemonicToSeed(process.env.MNEMONIC_SEED || "");
-      const hdkey = HDKey.fromMasterSeed(seed);
+      const hdKey = HDKey.fromMasterSeed(seed);
 
-      const childkey = hdkey.derive(`m/44'/60'/0'/0'/${totalWallets}'`);
+      const childKey = hdKey.derive(`m/44'/60'/0'/0'/${totalWallets}'`);
 
-      const wallet = EthereumWallet.fromPrivateKey(Buffer.from(childkey.privateKey!));
+      const wallet = EthereumWallet.fromExtendedPrivateKey(childKey.privateExtendedKey!);
 
       const createdWallet = await insertUserAddress(wallet.getAddressString(), request.body.profile_id);
 
@@ -58,11 +58,11 @@ const user: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
     }
 
     // throw error if user does not exist
-    if (!userWallet?.data?.[0]?.address) {
+    if (!userWallet?.data?.address) {
       throw new Error("user does not exist");
     }
 
-    reply.send({ address: userWallet?.data?.[0]?.address ?? "" });
+    reply.send({ address: userWallet?.data?.address ?? "" });
   });
 };
 
