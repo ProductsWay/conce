@@ -1,0 +1,12 @@
+{
+	"title": "Wallet Body Schema",
+	"type": "object",
+	"properties": {
+		"profile_id": {
+			"type": "string"
+		}
+	},
+	"required": [
+		"profile_id"
+	]
+}
