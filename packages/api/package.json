@@ -11,7 +11,8 @@
     "start": "ts-node src/server.ts",
     "build:ts": "npm run clean && tsc",
     "clean": "rimraf dist",
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "ts-node-dev src/server.ts",
+    "compile-schemas": "json2ts -i src/schemas -o src/types"
   },
   "keywords": [
     "fastify",
@@ -23,6 +24,8 @@
     "@sinclair/typebox": "^0.20.5",
     "@supabase/supabase-js": "^1.25.0",
     "close-with-grace": "^1.1.0",
+    "ethereum-cryptography": "^0.2.0",
+    "ethereumjs-wallet": "^1.0.2",
     "fastify": "^3.22.1",
     "fastify-autoload": "^3.9.0",
     "fastify-cli": "^2.13.0",
@@ -39,6 +42,7 @@
     "@types/node": "16.11.4",
     "@types/tap": "15.0.5",
     "cross-env": "7.0.3",
+    "json-schema-to-typescript": "^10.1.5",
     "tap": "15.0.10",
     "ts-node-dev": "1.1.8"
   }

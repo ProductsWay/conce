@@ -23,7 +23,7 @@ const closeListeners = closeWithGrace({ delay: 500 }, async (opts: any) => {
   await app.close();
 });
 
-app.addHook("onClose", async (instance, done) => {
+app.addHook("onClose", async (_instance, done) => {
   closeListeners.uninstall();
   done();
 });
