@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
         '/': (_) => const SplashPage(),
         '/login': (_) => const LoginPage(),
         '/account': (_) => const AccountPage(),
-        '/wallet': (_) => const WalletPage(),
       },
     );
   }

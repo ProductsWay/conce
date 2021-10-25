@@ -53,9 +53,7 @@ class _WalletPageState extends AuthRequiredState<WalletPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Wallet')),
-      body: ListView(
+    return ListView(
         padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 12),
         children: [
           // showl loading text or wallet address
@@ -69,8 +67,6 @@ class _WalletPageState extends AuthRequiredState<WalletPage> {
               style: Theme.of(context).textTheme.headline6,
             ),
           const SizedBox(height: 18),
-        ],
-      ),
-    );
+        ]);
   }
 }
