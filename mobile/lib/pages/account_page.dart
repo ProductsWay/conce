@@ -22,23 +22,21 @@ class _AccountPageState extends AuthRequiredState<AccountPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Account'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(
-                text: 'Profile',
-              ),
-              Tab(
-                text: 'Wallet',
-              ),
-            ],
-          ),
-        ),
+        appBar: AppBar(),
         body: const TabBarView(
           children: [
             UserProfilePage(),
             WalletPage(),
+          ],
+        ),
+        bottomNavigationBar: const TabBar(
+          tabs: [
+            Tab(
+              text: 'Profile',
+            ),
+            Tab(
+              text: 'Wallet',
+            ),
           ],
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:supabase/supabase.dart';
+
 import 'package:conce_app/components/auth_required_state.dart';
 import 'package:conce_app/utils/constants.dart';
 
@@ -62,9 +64,22 @@ class _WalletPageState extends AuthRequiredState<WalletPage> {
           else if (_address == null)
             const Text('No wallet address found')
           else
-            Text(
-              'Wallet address: $_address',
-              style: Theme.of(context).textTheme.headline6,
+            // show qr iamge below address
+            Column(
+              children: [
+                const SizedBox(height: 12),
+                QrImage(
+                  data: _address ?? '',
+                  version: QrVersions.auto,
+                  // full width of the screen
+                  size: MediaQuery.of(context).size.width,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Wallet address: $_address',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ],
             ),
           const SizedBox(height: 18),
         ]);
