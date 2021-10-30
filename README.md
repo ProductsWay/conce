@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: jellydn](https://img.shields.io/twitter/follow/jellydn.svg?style=social)](https://twitter.com/jellydn)
 
-> Loyalty Points System
+> Loyalty Points System - Real world blockchain example
 
 ## 🏠 [Homepage](https://conce.productsway.com)
 
@@ -30,14 +30,15 @@ yarn api:dev
 
 ### Web admin
 
-````sh
+```sh
 yarn admin:dev
+```
 
 ## Run tests
 
 ```sh
 yarn test
-````
+```
 
 ## Author
 
@@ -56,6 +57,10 @@ Feel free to check [issues page](https://github.com/ProductsWay/conce/issues).
 ## Stargazers 🌟
 
 [![Stargazers repo roster for ProductsWay/conce](https://reporoster.com/stars/ProductsWay/conce)](https://github.com/ProductsWay/conce/stargazers)
+
+## Forkers 🌟
+
+[![Forkers repo roster for @ProductsWay/conce](https://reporoster.com/forks/ProductsWay/conce)](https://github.com/ProductsWay/conce/network/members)
 
 ## Show your support
 
