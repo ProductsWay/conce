@@ -1,12 +1,13 @@
-import { Refine } from "@pankod/refine";
-import { dataProvider } from "@pankod/refine-supabase";
-import "@pankod/refine/dist/styles.min.css";
+import { useRoutes } from "react-router-dom";
 
-import authProvider from "./authProvider";
-import { supabaseClient } from "./utility";
+import { useAppSelector } from "./app/hooks";
+import routes from "./routes";
+import { isLoggedInSelector } from "./services/user_slice";
 
-function App() {
-  return <Refine dataProvider={dataProvider(supabaseClient)} authProvider={authProvider} />;
-}
+const App = () => {
+  const isLoggedIn = useAppSelector(isLoggedInSelector);
+  const router = useRoutes(routes(isLoggedIn));
+  return router;
+};
 
 export default App;

@@ -21,7 +21,7 @@
     "@storybook/addon-essentials": "6.3.12",
     "@storybook/addon-links": "6.3.12",
     "@storybook/react": "6.3.12",
-    "@tailwindcss/forms": "0.3.4",
+    "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/typography": "0.4.1",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.1.2",

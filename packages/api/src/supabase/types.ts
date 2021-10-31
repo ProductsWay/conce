@@ -12,6 +12,102 @@ export interface paths {
       };
     };
   };
+  "/admin_users": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.admin_users.id"];
+          username?: parameters["rowFilter.admin_users.username"];
+          password?: parameters["rowFilter.admin_users.password"];
+          created_at?: parameters["rowFilter.admin_users.created_at"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["admin_users"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** admin_users */
+          admin_users?: definitions["admin_users"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.admin_users.id"];
+          username?: parameters["rowFilter.admin_users.username"];
+          password?: parameters["rowFilter.admin_users.password"];
+          created_at?: parameters["rowFilter.admin_users.created_at"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.admin_users.id"];
+          username?: parameters["rowFilter.admin_users.username"];
+          password?: parameters["rowFilter.admin_users.password"];
+          created_at?: parameters["rowFilter.admin_users.created_at"];
+        };
+        body: {
+          /** admin_users */
+          admin_users?: definitions["admin_users"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/profiles": {
     get: {
       parameters: {
@@ -210,6 +306,16 @@ export interface paths {
 }
 
 export interface definitions {
+  admin_users: {
+    /**
+     * Note:
+     * This is a Primary Key.<pk/>
+     */
+    id: number;
+    username?: string;
+    password?: string;
+    created_at?: string;
+  };
   profiles: {
     /**
      * Note:
@@ -258,6 +364,12 @@ export interface parameters {
   offset: string;
   /** Limiting and Pagination */
   limit: string;
+  /** admin_users */
+  "body.admin_users": definitions["admin_users"];
+  "rowFilter.admin_users.id": string;
+  "rowFilter.admin_users.username": string;
+  "rowFilter.admin_users.password": string;
+  "rowFilter.admin_users.created_at": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;

@@ -5,7 +5,8 @@ import EthereumWallet from "ethereumjs-wallet";
 import { FastifyPluginAsync } from "fastify";
 
 import WalletBody from "../../schemas/wallet_body.json";
-import { countWallets, getUserAddress, insertUserAddress } from "../../supabase";
+import { countWallets, getAdminUser, getUserAddress, insertUserAddress } from "../../supabase";
+import { LoginBodySchema } from "../../types/login_body";
 import { WalletBodySchema } from "../../types/wallet_body";
 
 const Wallet = Type.Object({
@@ -13,9 +14,45 @@ const Wallet = Type.Object({
 });
 type WalletType = Static<typeof Wallet>;
 
+const UserToken = Type.Object({
+  token: Type.String(),
+});
+type UserTokenType = Static<typeof UserToken>;
+
 const user: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
   fastify.get("/", async (_request, reply) => {
     reply.send({ hello: "world" });
+  });
+
+  // get admin user detail
+  fastify.get(
+    "/me",
+    {
+      preValidation: [fastify.authenticate],
+    },
+    async function (request, _reply) {
+      return request.user;
+    }
+  );
+
+  // user login
+  fastify.post<{
+    Body: LoginBodySchema;
+    Reply: UserTokenType;
+  }>("/login", async (request, reply) => {
+    const adminUser = await getAdminUser(request.body.username, request.body.password);
+
+    if (adminUser.error) {
+      fastify.log.error(adminUser.error);
+      throw new Error("Invalid login credentials");
+    } else {
+      if (!adminUser.data) {
+        throw new Error("Invalid login credentials");
+      }
+
+      const token = fastify.jwt.sign(adminUser.data);
+      reply.send({ token });
+    }
   });
 
   // create new user wallet
