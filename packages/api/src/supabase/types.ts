@@ -108,6 +108,102 @@ export interface paths {
       };
     };
   };
+  "/companies": {
+    get: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          owner_id?: parameters["rowFilter.companies.owner_id"];
+          /** Filtering Columns */
+          select?: parameters["select"];
+          /** Ordering */
+          order?: parameters["order"];
+          /** Limiting and Pagination */
+          offset?: parameters["offset"];
+          /** Limiting and Pagination */
+          limit?: parameters["limit"];
+        };
+        header: {
+          /** Limiting and Pagination */
+          Range?: parameters["range"];
+          /** Limiting and Pagination */
+          "Range-Unit"?: parameters["rangeUnit"];
+          /** Preference */
+          Prefer?: parameters["preferCount"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: {
+          schema: definitions["companies"][];
+        };
+        /** Partial Content */
+        206: unknown;
+      };
+    };
+    post: {
+      parameters: {
+        body: {
+          /** companies */
+          companies?: definitions["companies"];
+        };
+        query: {
+          /** Filtering Columns */
+          select?: parameters["select"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** Created */
+        201: unknown;
+      };
+    };
+    delete: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          owner_id?: parameters["rowFilter.companies.owner_id"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+    patch: {
+      parameters: {
+        query: {
+          id?: parameters["rowFilter.companies.id"];
+          created_at?: parameters["rowFilter.companies.created_at"];
+          name?: parameters["rowFilter.companies.name"];
+          owner_id?: parameters["rowFilter.companies.owner_id"];
+        };
+        body: {
+          /** companies */
+          companies?: definitions["companies"];
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferReturn"];
+        };
+      };
+      responses: {
+        /** No Content */
+        204: never;
+      };
+    };
+  };
   "/profiles": {
     get: {
       parameters: {
@@ -316,6 +412,12 @@ export interface definitions {
     password?: string;
     created_at?: string;
   };
+  companies: {
+    id: number;
+    created_at?: string;
+    name?: string;
+    owner_id?: number;
+  };
   profiles: {
     /**
      * Note:
@@ -370,6 +472,12 @@ export interface parameters {
   "rowFilter.admin_users.username": string;
   "rowFilter.admin_users.password": string;
   "rowFilter.admin_users.created_at": string;
+  /** companies */
+  "body.companies": definitions["companies"];
+  "rowFilter.companies.id": string;
+  "rowFilter.companies.created_at": string;
+  "rowFilter.companies.name": string;
+  "rowFilter.companies.owner_id": string;
   /** profiles */
   "body.profiles": definitions["profiles"];
   "rowFilter.profiles.id": string;

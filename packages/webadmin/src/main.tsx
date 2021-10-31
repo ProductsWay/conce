@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 
-import App from "./app";
+import App from "./App";
 import store, { persistor } from "./app/store";
 import ErrorBoundary from "./error_boundary";
 import "./index.css";
