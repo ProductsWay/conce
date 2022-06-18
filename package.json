@@ -67,7 +67,7 @@
     "postcss": "8.3.11",
     "prettier": "2.4.1",
     "prettier-plugin-solidity": "1.0.0-beta.19",
-    "prisma": "3.4.2",
+    "prisma": "3.15.2",
     "solgraph": "0.3.3",
     "solhint": "3.3.6",
     "solidity-coverage": "0.7.17",
