@@ -41,10 +41,10 @@
   "devDependencies": {
     "@types/busboy": "0.3.1",
     "@types/node": "16.11.7",
-    "@types/tap": "15.0.5",
+    "@types/tap": "15.0.11",
     "cross-env": "7.0.3",
     "json-schema-to-typescript": "^10.1.5",
-    "tap": "15.0.10",
+    "tap": "15.2.3",
     "ts-node-dev": "1.1.8"
   }
 }
